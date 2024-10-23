@@ -1,0 +1,67 @@
+### auth login
+
+# @name login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "u1002",
+    "password": "changeit"
+}
+
+###
+@authToken = {{login.response.body.access_token}}
+
+### find all
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "username": "u1003",
+    "password": "changeit",
+    "role": "USER"
+}
+
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "u1002",
+    "password": "changeit",
+    "role": "USER"
+}
+
+### find  all
+GET http://localhost:3000/users
+
+
+###
+### Admin Zone
+###
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "a1002",
+    "password": "changeit",
+    "role": "ADMIN"
+}
+
+###
+### Manager Zone
+###
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "m1002",
+    "password": "changeit",
+    "role": "MANAGER"
+}

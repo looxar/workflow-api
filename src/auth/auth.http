@@ -1,0 +1,45 @@
+### auth login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "u1001",
+    "password": "changeit"
+}
+
+###
+### auth login - user not found
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "x1001",
+    "password": "changeit"
+}
+
+### auth login - wrong password
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "u1001",
+    "password": "wrong"
+}
+
+### admin auth login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "a1001",
+    "password": "changeit"
+}
+
+### manager auth login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "m1001",
+    "password": "changeit"
+}
