@@ -43,25 +43,45 @@ GET http://localhost:3000/users
 ###
 ### Admin Zone
 ###
-### create
-POST http://localhost:3000/users
+# @name loginAdmin
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "a1002",
+    "username": "m1001",
+    "password": "changeit"
+}
+
+###
+@authTokenAdmin = {{loginAdmin.response.body.access_token}}
+
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{authTokenAdmin}}
+
+{
+    "username": "u1004",
     "password": "changeit",
-    "role": "ADMIN"
+    "role": "USER"
 }
 
 ###
 ### Manager Zone
 ###
-### create
-POST http://localhost:3000/users
+# @name loginManager
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "m1002",
-    "password": "changeit",
-    "role": "MANAGER"
+    "username": "m1001",
+    "password": "changeit"
 }
+
+###
+@authTokenManager = {{loginManager.response.body.access_token}}
+
+### create
+GET http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{authTokenManager}}

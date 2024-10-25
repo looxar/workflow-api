@@ -19,7 +19,7 @@ export class Item {
   })
   description: string;
 
-  @Column()
+  @Column('numeric', { precision: 10, scale: 4 })
   amount: number;
 
   @Column()

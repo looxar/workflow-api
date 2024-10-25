@@ -10,10 +10,12 @@ import dbConfig from './db/db.config';
 import { LoginLoggerMiddleware } from './middlewares/login-logger.middleware';
 
 @Module({
-  imports: [AuthModule,
+  imports: [
+    AuthModule,
     ConfigModule.forRoot({ isGlobal: true, load:[dbConfig] }), 
     UsersModule, 
-    DbModule, ItemsModule
+    DbModule, 
+    ItemsModule
   ],
   controllers: [AppController],
   providers: [AppService],
